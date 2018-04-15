@@ -1,0 +1,224 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[left=3cm,right=1.5cm,top=2cm,bottom=2cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[L7x]{fontenc}
+\usepackage[english, lithuanian]{babel}
+\usepackage{graphicx} 
+\usepackage{listings}
+\usepackage{listingsutf8}
+\usepackage{subfigure}
+\usepackage{caption}
+\usepackage[hidelinks]{hyperref}
+\usepackage{float}
+\usepackage[nottoc,numbib]{tocbibind}
+\usepackage{accents}
+\setlength{\parindent}{0.7cm}
+\renewcommand{\baselinestretch}{1.5}
+\begin{document}
+\textwidth 6.5in
+\textheight 9.00in
+\begin{titlepage}
+\vskip 20pt
+\centerline{\bf \large VILNIAUS UNIVERSITETAS}
+\bigskip
+\centerline{\large \textbf{MATEMATIKOS IR INFORMATIKOS FAKULTETAS}}
+\bigskip
+\centerline{\large \textbf{MATEMATINĖS INFORMATIKOS KATEDRA}}
+\vskip 100pt
+\centerline{\bf \Large \textbf{PRAKTIKOS ATASKAITA}}
+\vskip 100pt
+\begin{flushleft}
+Praktiką atliko:
+\hfill
+Dovydas Kičiatovas,
+
+\hfill
+Bioinformatikos bakalauro studijos, 4 kursas
+\vskip 10pt
+Praktikos institucija:
+\hfill
+Lietuvos sveikatos mokslų universitetas,
+
+\hfill
+Neuromokslų institutas,
+
+\hfill
+Molekulinės neuroonkologijos laboratorija
+\vskip 10pt
+Organizacijos praktikos vadovas:
+\hfill
+Vyresn. m. d. dr. Daina Skiriutė
+\vskip 10pt
+Organizacijos praktikos vadovo įvertinimas:\hfill$\rule{5cm}{0.15mm}$
+\hfill
+
+\vskip 10pt
+Universiteto praktikos vadovas:
+\hfill
+Irus Grinis
+
+\end{flushleft}
+\bigskip
+\bigskip
+\begin{flushright}
+Ataskaitos įteikimo data: $\rule{5cm}{0.15mm}$
+
+Registracijos Nr.: $\rule{5cm}{0.15mm}$
+
+Įvertinimas: $\rule{5cm}{0.15mm}$
+\end{flushright}
+\vskip 100pt
+\centerline{\large \textbf{VILNIUS 2018}}
+\end{titlepage}
+\selectlanguage{lithuanian}
+\newpage
+\tableofcontents
+\newpage
+\section{Įmonė}
+\indent\indent
+\subsection{Apie įmonę}
+Praktika atlikta Lietuvos sveikatos mokslų universitete, Molekulinės neuroonkologijos laboratorijoje, Neuromokslų institute. Laboratorijos interesai – retų centrinės nervų sistemos (CNS) ligų susidarymas ir vystymasis (etiopatogenezė), molekuliniai genetiniai ypatumai, diagnostikos ir gydymo optimizavimas. Laboratorija įkurta 1978 metų balandžio 28 dieną kaip Sveikatos apsaugos ministerijos Onkologijos mokslo-tiriamojo instituto, skirto smegenų ir sisteminės kraujotakos centrinės reguliacijos tyrimams, padalinys.
+
+Pagrindinis laboratorijos tikslas – ištirti retų CNS ligų vystymosi dėsningumus ir nustatyti šių ligų išsivystymą bei prognozę lemiančius veiksnius bei gerinti gydymo ir diagnostikos rezultatus. Tai daroma šiomis kryptimis: CNS navikais sergančių pacientų kraujo DNR ir navikinio audinio pavyzdžių duomenų bazės kaupimas, jos pagrindu vykdoma molekulinių žymenų paieška galvos smegenų navikuose, siekiant tiksliau prognozuoti navikų gydymo veiksmingumą, siekiama nustatyti glioblastomų diagnozei ir prognozei molekulinių žymenų ir klinikinių veiksnių kompleksus bei molekulinius veiksnius. Taip pat siekiama optimizuoti galvos smegenų piktybinių gliomų chirurginę diagnostiką pritaikant inovatyvias optines audinių identifikavimo technologijas\cite{molneurolab}.
+
+Neuromokslų institutas, taip pat ir Molekulinės neuroonkologijos laboratorija yra įsikūrę Kaune, adresu Eivenių g. 4, Lietuvos sveikatos mokslų universiteto ligoninės - Kauno Klinikų teritorijoje.
+
+\subsection{Darbo sąlygos}
+\indent\indent
+Kadangi šioje įmonėje bioinformatiko darbo vieta kol kas dar nėra įkurta ir vienas iš šios praktikos tikslų darbovietėje buvo pamėginti tyrimams pritaikyti bioinformatinius metodus pasitelkiant bioinformatikos specialybę turintį darbuotoją, praktiką sutarta atlikti nuotoliniu būdu. Šiai praktikai nutarta atlikti tiriamojo pobūdžio darbą, todėl man (praktikantui) tiek darbo pradžioje, tiek eigoje buvo leista pačiam pasirinkti darbo metodiką ir įrankius, prieš tai sutariant su praktikos vietos vadovu.
+
+Praktikos darbas buvo orientuotas į rezultatus, t.y. man griežtas režimas ir darbo valandos nebuvo taikyti. Darbo eigos kokybė rėmėsi tarpusavio komunikacija tarp manęs ir laboratorijos praktikos vadovo bei kitų laboratorijos darbuotojų (taip pat ir universiteto praktikos vadovo konsultacijomis metodiniais klausimais). Sutarta kelis kartus įstaigoje padaryti atliktų darbų pristatymą laboratorijos darbuotojams. Klausimai ir kylančios problemos paprastai spręstos elektroniniu paštu.
+
+\section{Įvadas}
+\subsection{Darbo tikslas ir uždaviniai}
+\indent\indent
+Glioblastoma Multiforme, trumpai GBM - vienas piktybiškiausių centrinės nervų sistemos navikų. Ši vėžio forma viena dažniausių, susidarančių žmogaus smegenyse ir pasižymi itin dideliu agresyvumu ir atsparumu gydymui. Dažniausiai prognozuojamas pacientų išgyvenamumas su gydymu - 12 mėnesių\cite{gliosurvival}, o glioblastomos susidarymo priežastys nėra aiškiai nustatytos, be to, pradiniai simptomai nėra specifiniai šiai vėžio rūšiai. Molekulinės neuroonkologijos laboratorijos pasiūlyta tema - su glioblastoma susijusių molekulinių žymenų, leisiančių diagnozuoti glioblastoma, prognozuoti pacientų išgyvenamumą ir padėti skirti įvairias terapijas, paieška. Vienas iš molekulinių žymenų kandidatų - mažosios RNR molekulės: miRNR. Įvairių tyrimų metu nustatyta, kad miRNR ekspresija gali būti susijusi įvairiomis patologijomis ir glioblastomos savybėmis. Be to, glioblastoma gali būti skirstoma į kelis potipius - potipių skaičius įvairiose publikacijose skiriasi, tačiau šiai praktikai nutarta naudoti Verhaak et al.\cite{verhaak} pasiūlytus 4 potipius - klasikinį, mezenchiminį, neuralinį ir proneuralinį.
+
+Praktikai nuspręsta pamėginti pasinaudoti egzistuojančiomis įvairiomis duomenų bazėmis, kuriose būtų galima rasti glioblastoma sergančių pacientų duomenis - miRNR ekspresijas, klinikinius duomenis ir t.t. Apibendrinant - pagrindinis šios praktikos uždavinys yra miRNR, susijusių su glioblastomos savybėmis, potipiais ir atsaku į terapiją, paieška. Galutinis darbo tikslas - minėtuosius glioblastomos ypatumus apimantis miRNR sąrašas, kurio miRNR būtų galima patikrinti laboratorijoje su turimais pacientų auglio mėginiais.
+
+\subsection{Informacijos ir duomenų rinkimas}
+\indent\indent
+Pagrindinis su glioblastoma (taip pat ir miRNR) susijusios teorinės informacijos šaltinis - įvairūs moksliniai straipsniai iš skirtingų mokslinių tyrimų bibliotekų (NCBI, PMC ir t.t.). Metodinė informacijos apdorojimo informacija gauta iš naudojamų programų (Statistinio paketo R, Bioconductor paketo ir pan.) atitinkamų žinynų (manuals).
+
+Beveik visi glioblastomos naviką turinčių pacientų miRNR ekspresijos duomenys gauti iš TCGA (The Cancer Genome Atlas) duomenų bazės. TCGA yra JAV Nacionalinio Vėžio Instituto (National Cancer Institute, NIH) ir Nacionalinio Žmogaus Genomo Tyrimų Instituto (National Human Genome Research Institute, NHGRI) kolaboracijos, skirtos žmogaus vėžio formų genominės informacijos tyrimams, rezultatas. Šio projekto paskirtis yra efektyvus su žmogaus vėžiu susijusios informacijos rinkimas ir mėginių analizavimas. Čia laikomi 33 žmogaus vėžio tipų duomenys, gauti iš beveik 11000 pacientų. Projektas baigtas 2017 metais ir jo darbą tęsia NCI Vėžio Genomikos Centras (NCI Center for Cancer Genomics, CCG). Nors naujai sukurta duomenų bazė pavadinta Genomic Data Commons (GDC), senoji (Legacy) TCGA duomenų bazė išliko.
+
+Šios praktikos temai svarbiausia TCGA Legacy duomenų bazės dalis - TCGA-GBM projektas, skirtas glioblastomos klinikiniams, sekoskaitų ir biologinių molekulių bei genų ekspresijų duomenims rinkti. Šiame projekte surinkti 617 pacientų duomenys - genų, miRNR, mRNR ekspresija, klinikiniai, sekoskaitų ir pan. duomenys. Visi duomenų tipai, išskyrus sekoskaitos failus, yra viešai prieinami. Pasak TCGA, sekoskaitos duomenims ribojama prieiga pacientų tapatybės saugumo sumetimais. Sekoskaitos duomenims gauti reikalinga oficiali laboratorijos registracija į projektą (Neuromokslų instituto Molekulinės neuroonkologijos laboratorijai inicijuoti registracijos nepavyko, nes, panašu, prieiga leidžiama tik JAV vėžio tyrimų laboratorijoms).
+
+Praktikos temai aktualius miRNR ekspresijos duomenis turi 576 pacientai. Visiems pacientams miRNR duomenys sudaryti su Agilent miRNR masyvu (Agilent miRNA Microarray, H-miRNA 8x15K)\cite{agilent}. Šiuose duomenyse tiriamos 534 miRNA. Taip pat surinkta šių pacientų klinikinė informacija - amžius, išgyventas laikas, terapijos tipas ir pan. Šių duomenų analizė sudaro pagrindinį praktikos užduoties branduolį.
+
+\subsection{Atlikto darbo reikšmė}
+\indent\indent
+Galutinis darbo rezultatas, kaip ir minėjau, buvo su glioblastomos potipiais ir išgyvenamumu susijusių miRNR sąrašas. Toks sąrašas, tikimasi, leistų sudaryti atskiriems glioblastomos potipiams būdingus ekspresijos bruožus - diagnozės etape atskiriant pacientus, jų turimus navikus klasifikuodami į potipius, būtų galima individualizuoti terapiją. Pasak Verhaak et al., skirtingi glioblastomos potipiai skirtingu efektyvumu atsako į tam tikras terapijas. Be to, izoliuojant atskiras miRNR, kurios tarp išgyvenamumo grupių turi ekspresijos skirtumus, galima mėginti jomis augliuose manipuliuoti ir taip galbūt pagerinti paciento išgyvenamumą.
+
+\section{Darbo metodika}
+\subsection{Užduoties teorija}
+\indent\indent
+Svarbiausią šios praktikos teorinį pagrindą sudaro galimybė glioblastomą suskirstyti į 4 molekulinius potipius (klasikinį, mezenchiminį, neuralinį ir proneuralinį). Šie potipiai yra aprašyti 2010 metais Verhaak tyrimuose\cite{verhaak}, kuris rėmėsi 2006 metais pateiktu Phillips tyrimu\cite{philips}, kuriame išskirti 3 gliomos (tarp jų ir glioblastomos) potipiai - proneuralinis, mezenchiminis ir proliferatyvus. Šiuose tyrimuose tyrinėjama genų ekspresija ir mutacijos, bet dėl miRNR vaidmens kontroliuojant genų ekspresiją, galima daryti prielaidą, kad ir miRNR ekspresija turės aiškiai matomų skirtumų tarp glioblastomos potipių. Tą remia kiti moksliniai straipsniai ir eksperimentai\cite{godlewski}.
+
+Kartu klasifikuojant glioblastomą į 4 jos potipius, reikia atsižvelgti į pacientų išgyvenamumą ir rasti miRNR, kurios turi įtaką atskiriant tiek potipius, tiek išgyvenamumo grupes. Sąsaja tarp miRNR, potipių ir išgyvenamumo yra aprašyta nemažai mokslinių straipsnių - vienas iš jų yra G. Marziali tyrimas\cite{marziali}. Pagal turimus pacientų klinikinius duomenis iš TCGA Legacy duomenų bazės, kuriuose, be kitų požymių, yra nurodyti paciento išgyventas laikas mėnesiais, glioblastomos potipis ir suteiktos terapijos tipas. Tai leidžia pacientus suskirstyti į išgyvenamumo grupes bei pagal terapiją, sudarant kiek įmanoma didesnes grupes ir tuo pasinaudoti, taikant statistinius testus siekiant nustatyti besiskiriančias miRNR. Tai, kad pacientai turi nustatytus glioblastomos potipius (ir į 3, ir į 4 potipius, priklausomai nuo to, kurio tyrimo rezultatais remiamasi - Verhaak ar Phillips), leidžia sudaryti klasifikavimo modelį, kurį su imties dalimi galima treniruoti ir po to testuoti. W. Tang\cite{tang} straipsnyje aprašomu klasifikavimo būdu tik su miRNR pasiektas 69.1 proc. tikslumas (taip pat aprašoma miRNR ir mRNR kombinacija, tačiau šiai praktikai tas nebuvo naudojama), tad šios praktikos metu apžvelgtais klasifikatoriais siekiama gauti ne mažesnį tikslumą.
+
+Šiai temai egzistuoja nemažai mokslinės literatūros, tačiau reikia atkreipti dėmesį, kad glioblastoma dar nėra pilnai ištyrinėtas objektas, tad galima tikėtis rezultatų skirtumų tarp skirtingų šaltinių.
+
+\subsection{Praktiniai metodai}
+\indent\indent
+Didžioji dalis darbo atlikta naudojant statistinį paketą R\cite{R} ir papildomus jo priedus-paketus (pagrinde - Bioconductor\cite{bioconductor}). Tai leido greitai gauti duomenis, atlikti reikalingus jų pertvarkymus ir gauti dominančius poaibius, patogiai panaudoti statistinius testus ir vizualizavimo priemones. Taip pat pasitelkti kai kurie internete esantys su glioblastomos tyrimu susiję įrankiai, pavyzdžiui, "Glioblastoma Bio Discovery Portal"\cite{gbdp}. Darbo metu naudota Windows 10 operacinė sistema.
+
+Apibendrinant, šios praktikos darbo pagrindas buvo turimų pacientų duomenų analizė ir buvo taikyti šie metodai: viso miRNR ekspresijos duomenų rinkinio klasifikavimas į 4 glioblastomos molekulinius potipius kokiu nors mašininio mokymo klasifikatoriumi (pavyzdžiui, Random Forest) pagal ekspresijos lygį ir svarbiausių klasifikatoriaus elementų analizė. To paties tipo klasifikavimas taip pat taikytas klasifikuoti pacientus į išgyvenamumo grupes tiek bendrame pacientų rinkinyje, tiek suskirstytame į terapijos grupes.
+Taip pat pasitelktos vizualizavimo priemonės - intensyvumo žemėlapiai (heatmap), "dėžučių" diagramos (boxplot) ir kiti grafiniai pavaizdavimo būdai. Analizuojant terapijų grupes, naudoti statistiniai testai (pavyzdžiui, Mann-Whitney U testas) siekiant nustatyti, ar miRNR ekspresija tarp grupių prasmingai skiriasi.
+
+\section{Duomenų analizė}
+\subsection{Bendras pacientų klasifikavimas pagal GBM potipius}
+\indent\indent
+Pirmas žingsnis - kiek įmanoma sumažinti tiriamuose duomenyse esančių miRNR skaičių, išmetant tas miRNR, kurių ekspresija tarp 4 glioblastomos potipių nesiskiria arba skiriasi labai mažai. Ši problema išspręsta pasinaudojus tiesine regresija - daroma prielaida, kad, tarp glioblastomos potipių esant ryškiam skirtumui, tiesinio modelio regresinė tiesė turės koeficientą, nelygų nuliui. Be to, modelio patikimumą galima įvertinti naudojant tiesinio modelio dispersinę analizę ANOVA, leidžiančią gautį F statistiką. Žinoma, glioblastomos potipių išsidėstymas gali lemti tiesinės regresijos rezultatą, tad reikia nepamiršti visų įmanomų 4 elementų grupės perstatų (iš viso 24) - imamas rezultatas su mažiausia p-reikšme. Pasirinkus pasikliovimo lygmenį $Q = 0.99$, miRNR skaičius sumažintas iki 324. Šis skaičius dar nėra pakankamai mažas, tad papildomai atmestos miRNR, kurių ekspresijos skirtumai tarp potipių yra per maži. 1 paveiksle pavaizduoti atmestų ir priimtų miRNR pavyzdžiai.
+
+\begin{figure}[H]
+\centering
+\subfigure[Atmesta miRNR]{\centering\includegraphics[scale=0.4]{hsa-miR-187.png}}
+\centering
+\subfigure[Priimta miRNR]{\centering\includegraphics[scale=0.4]{hsa-miR-182.png}}
+\caption{Atmetamos ir priimamos miRNR pavyzdžiai.}
+\end{figure}
+
+Galutinai atrinkta 150 miRNR, kurios turi pakankamai ryškius skirtumus tarp glioblastomos potipių. Tolimesniuose šios praktikos tyrimuose naudotas šis sąrašas.
+
+Įvertinus įvairius mašininio mokymo klasifikavimo metodus, nuspręsta pasirinkti Random Forest metodą dėl gero spėjimo taiklumo, nereikalaujamo duomenų standartizavimo bei normalizavimo ir, svarbiausia, galimybės gauti kintamųjų svarbos reikšmes (Variable Importance)\cite{randomforest}. Visi pacientai ir jų miRNR (naudojamos tik minėtosios 150 miRNR) ekspresija suskirstomi į treniravimo ir testavimo imtis - 80 ir 20 proc. atitinkamai. Atlikti 100 klasifikavimų pagal pacientų miRNR ekspresiją į glioblastomos potipius (klasikinis, mezenchiminis, neuralinis ir proneuralinis) ir gautas vidurkis - 72 proc. Remiantis prieš tai minėto W. Tang straipsnio\cite{tang} rezultatais (69 proc. tikslumas), šį rezultatą galima laikyti geru.
+
+Nuspręsta 150 miRNR sumažinti dar labiau, paliekant tik geriausius klasifikatorius-kintamuosius pagal Random Forest klasifikatorių. Tą padaryti leidžia kintamųjų svarbos (Variable Importance) analizė. Gauto Random Forest modelio kintamųjų svarbą galima apibrėžti jų Gini koeficiento sumažėjimo vidurkiu Random Forest medžiuose vykdant kintamųjų perstatas. Nuspręsta tokiu būdu palikti 50 miRNR, su kuriomis galima klasifikuoti glioblastomos potipius. Reikia atkreipti dėmesį, kad klasifikavimo tikslumas nuo to nesuprastėja (gali ir pagerėti). Gautas grafikas pavaizduotas 2 paveiksle.
+
+\begin{figure}[h]
+	\centering
+		\includegraphics[scale=0.4]{varimp.png}
+	\caption{Kintamųjų (miRNR) svarba Random Forest modelyje }
+\end{figure}
+
+Pastaba: dėl R objektų vardų reikalavimų visų kintamųjų (miRNR) varduose brūkšneliai pakeisti taškais, o pasikartojančių elementų galuose esantis taškas atitinka žvaigždutę. Žemiau pateikiamas šių 50 miRNR ekspresijos intensyvumo žemėlapis (heatmap), kuriame pacientai yra sugrupuoti pagal glioblastomos potipį. Keturi klasteriai sudaryti k-vidurkių algoritmu, $k = 4$.
+
+\begin{figure}[h]
+	\centering
+		\includegraphics[scale=0.5]{ht.png}
+	\caption{miRNR intensyvumo žemėlapis.}
+\end{figure}
+
+Aiškiai matyti, kad tarp glioblastomos potipių galima atskirti regionus, kuriose tam tikrų miRNR deriniai atskiria kokį nors potipį nuo kitų. Galima daryti išvadą, kad miRNR ekspresijos profilis tarp glioblastomų potipių yra skirtingas ir su pakankamai mažu miRNR skaičiumi galima pasiekti normalų klasifikavimo tikslumą.
+
+\subsection{Bendras pacientų klasifikavimas pagal išgyvenamumą}
+
+
+\subsection{Terapijų grupės}
+Kitas žingsnis - surasti besiskiriančias miRNR tarp skirtingų terapijos grupių, skiriamų glioblastoma sergantiems pacientams. Išskirtos 3 pagrindinės terapijų grupės:
+\begin{itemize}
+\item{Standartinė radioterapija: 53 pacientai}
+\item{Standartinė radioterapija ir temozolomido chemoterapija: 77 pacientai}
+\item{Temozolomido chemoradiacija ir chemoterapija: 203 pacientai}
+\end{itemize}
+
+\newpage
+\begin{thebibliography}{2}
+\bibitem{molneurolab}
+Lietuvos Sveikatos Mokslų Universitetas.
+Neuromokslų fakultetas.
+Molekulinės neuroonkologijos laboratorija.
+URL: http://www.lsmuni.lt/lt/struktura/medicinos-akademija/neuromokslu-institutas/laboratorijos/molekulines-neuroonkologijos-laboratorija.html
+\bibitem{gliosurvival}
+Gallego, O. (August, 2015).
+Nonsurgical treatment of recurrent glioblastoma.
+Current oncology (Toronto, Ont.). 22 (4): e273–81.
+\bibitem{verhaak}
+Verhaak RG, Hoadley KA, Purdom E, Wang V, Qi Y, Wilkerson MD, Miller CR, Ding L, Golub T, Mesirov JP, Alexe G, Lawrence M, O'Kelly M, Tamayo P, Weir BA, Gabriel S, Winckler W, Gupta S, Jakkula L, Feiler HS, Hodgson JG, James CD, Sarkaria JN, Brennan C, Kahn A, Spellman PT, Wilson RK, Speed TP, Gray JW, Meyerson M, Getz G, Perou CM, Hayes DN.
+Integrated genomic analysis identifies clinically relevant subtypes of glioblastoma characterized by abnormalities in PDGFRA, IDH1, EGFR, and NF1.
+Cancer Cell. 2010 Jan 19;17(1):98-110. doi: 10.1016/j.ccr.2009.12.020.
+\bibitem{agilent}
+Agilent Human, Mouse, and Rat miRNA Microarrays.
+URL: https://cancergenome.nih.gov/abouttcga/aboutdata/platformdesign/agilentmirnamicroarray
+\bibitem{philips}
+Heidi S. Phillips, Samir Kharbanda, Ruihuan Chen, William F. Forrest, Robert H. Soriano, Thomas D. Wu, Anjan Misra, Janice M. Nigro, Howard Colman, Liliana Soroceanu, P. Mickey Williams, Zora Modrusan, Burt G. Feuerstein, Ken Aldape.
+Molecular subclasses of high-grade glioma predict prognosis, delineate a pattern of disease progression, and resemble stages in neurogenesis.
+Volume 9, Issue 3, p157–173, March 2006.
+DOI: https://doi.org/10.1016/j.ccr.2006.02.019
+\bibitem{godlewski}
+Jakub Godlewski, Ruben Ferrer-Luna, Arun K. Rooj, Marco Mineo, Franz Ricklefs, Yuji S. Takeda, M. Oskar Nowicki, Elżbieta Salińska, Ichiro Nakano, Hakho Lee, Ralph Weissleder, Rameen Beroukhim, E. Antonio Chiocca, Agnieszka Bronisz.
+MicroRNA Signatures and Molecular Subtypes of Glioblastoma: The Role of Extracellular Transfer.
+Stem Cell Reports. 2017 Jun 6; 8(6): 1497–1505.
+\bibitem{marziali}
+Giovanna Marziali, Mariachiara Buccarelli, Alessandro Giuliani, Ramona Ilari, Sveva Grande, Alessandra Palma, Quintino G. D'Alessandris, Maurizio Martini, Mauro Biffoni, Roberto Pallini, Lucia Ricci‐Vitiani.
+A three‐microRNA signature identifies two subtypes of glioblastoma patients with different clinical outcomes.
+Mol Oncol. 2017 Sep; 11(9): 1115–1129.
+\bibitem{tang}
+Wenlong Tang, Junbo Duan, Ji-Gang Zhang, Yu-Ping Wang.
+Subtyping glioblastoma by combining miRNA and mRNA expression data using compressed sensing-based approach.
+EURASIP J Bioinform Syst Biol. 2013; 2013(1): 2.
+\bibitem{R}
+The R Project for Statistical Computing.
+URL: https://www.r-project.org/
+\bibitem{bioconductor}
+Bioconductor.
+URL: https://bioconductor.org/
+\bibitem{gbdp}
+Glioblastoma Bio Discovery Portal.
+URL: https://gbm-biodp.nci.nih.gov/
+\bibitem{randomforest}
+Tin Kam Ho.
+Random decision forests.
+ICDAR '95 Proceedings of the Third International Conference on Document Analysis and Recognition (Volume 1) - Volume 1, Page 278. 
+\end{thebibliography}
+\end{document}
